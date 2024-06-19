@@ -9,6 +9,9 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
+dotenv.config();
+const port = process.env.APP_PORT;
+
 // Endpoint raiz
 app.get("/", (req, res) => {
     res.status(200).send("Servidor está funcionando corretamente.");
@@ -59,6 +62,8 @@ app.use((err, req, res, next) => {
     });
 });
 
-app.listen(process.env.APP_PORT, () => {
-    console.log(`O servidor está executando na porta ${APP_PORT}`);
+console.log(process.env.APP_PORT);
+
+app.listen(port, () => {
+    console.log(`O servidor está executando na porta ${port}`);
 });
